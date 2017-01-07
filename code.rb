@@ -2,10 +2,10 @@ require 'discordrb'
 require 'configatron'
 require_relative 'config.rb'
 
-bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 249268393817931776, prefix: 'BB^'
+bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 249268393817931776, prefix: 'B^'
 
 bot.ready do |event|
-  bot.game="Use BB^cmds or BB^info"
+  bot.game="Use B^cmds or B^info"
 end
 
 bot.command(:die, help_available: false) do |event|
