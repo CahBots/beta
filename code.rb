@@ -70,7 +70,7 @@ end
 
 bot.message(with_text: 'CBB prefix') do |event|
   event.respond "My prefix is `B^`. For help, do `B^help`"
-puts "\"CB Prefix\" | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
+puts "\"CBB Prefix\" | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
 bot.command(:rnumber, help_available: false, min_args: 2, max_args: 2) do |event, min, max|
