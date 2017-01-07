@@ -14,7 +14,7 @@ Anyways, here's the current command list (literally just copy & pasted from the 
 
 Command |  Description
 --------------------|--------------
-(upon saying "CB prefix") | Reminds you the prefix.
+(upon saying "CBB prefix") | Reminds you the prefix. New Bot, New Prefix
 `B^info` | Shows you some info about CB, or something idk.
 `B^rnumber` [Low Num] [High Num] | Gives you a random number between a given range. Ex: `B^rnumber 1 10`
 `B^help` | Shows a message telling you to use `B^cmds`
@@ -39,4 +39,4 @@ Command |  Description
  
 #### **Why is this repo here, you may ask**
  
- Well, it's a pretty easy way to transfer code from my PC to my VPS, that's the only reason. But if you want, you can use some of the code
+ Well, it's a pretty easy way to transfer code from my PC to my VPS, that's about all. Some sort of license for using code will appear soon:tm:
