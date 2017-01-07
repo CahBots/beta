@@ -169,8 +169,8 @@ bot.command([:cmds, :commands], chain_usable: false, max_args: 0) do |event|
 puts "^commands | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
-bot.command(:feedback, min_args: 1) do |event, *args|
-  event.message.delete
+bot.command(:feedback, min_args: 1) do |_event, *args|
+  _event.message.delete
   bot.send_message(252239053712392192, "New Feedback from `#{event.user.name}`\##{event.user.discriminator}. ID: #{event.user.id}. From the land of `#{event.server.name}` (Server ID: #{event.server.id}).
 
 *#{args.join(' ')}*")
