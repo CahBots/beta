@@ -2,10 +2,10 @@ require 'discordrb'
 require 'configatron'
 require_relative 'config.rb'
 
-bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 249268393817931776, prefix: 'B^'
+bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 249268393817931776, prefix: 'BB^'
 
 bot.ready do |event|
-  bot.game="Use ^cmds or ^info"
+  bot.game="Use BB^cmds or BB^info"
 end
 
 bot.command(:die, help_available: false) do |event|
@@ -62,8 +62,8 @@ bot.command(:info, help_available: false, max_args: 0) do |event|
   event << "**u suk a bunnch an u can hardly mak a discord bawt.** Radical, thank you for noticing"
 end
 
-bot.message(with_text: 'CB prefix') do |event|
-  event.respond "My prefix is `^`. For help, do `^help`"
+bot.message(with_text: 'CBB prefix') do |event|
+  event.respond "My prefix is `B^`. For help, do `B^help`"
 end
 
 bot.command(:rnumber, help_available: false, min_args: 2, max_args: 2) do |event, min, max|
@@ -102,8 +102,8 @@ end
 bot.command(:update, help_available: false, max_args: 0) do |event|
   event << '**Latest CahBot Update**'
   event << ''
-  event << 'No more will I have to do `^eval bot.servers.count` because we now have **^servercount**!'
-  event << 'A couple stuff was updated, some commands now have ailiases (^commands and ^cmds return the same thing, ^servcount is the same as ^servercount, etc.).'
+  event << 'No more will I have to do `B^eval bot.servers.count` because we now have **B^servercount**!'
+  event << 'A couple stuff was updated, some commands now have ailiases (B^commands and B^cmds return the same thing, B^servcount is the same as B^servercount, etc.).'
   event << 'That\'s about all that was done recently'
 end
 
@@ -117,7 +117,7 @@ end
 
 bot.command(:help, help_available: false, max_args: 0) do |event|
   event << ' woahdude, you looking for help? Well, here\'s what you need to know.'
-  event << ' For a list of commands, you can do `^cmds`, for info about CahBot, do `^info`'
+  event << ' For a list of commands, you can do `B^cmds`, for info about CahBot, do `B^info`'
 end
 
 bot.command(:noot, help_available: false, max_args: 0) do |event|
@@ -126,33 +126,35 @@ end
 
 bot.command([:cmds, :commands], chain_usable: false, max_args: 0) do |event|
   event << ' Here are all of my commands for you to use!'
-  event << ' (upon saying "CB prefix") reminds you the prefix'
-  event << ' ^info: Shows you some info about CB, or something'
-  event << ' ^rnumber <Number> <Other Number>: Gives you a random number'
-  event << ' ^help: Basically tells you to go here'
-  event << ' ^cmds: pulls up this'
-  event << ' ^eightball: Ask the 8ball something'
-  event << ' ^userinfo: Shows some info about you'
-  event << ' ^reverse: Reverses text'
-  event << ' ^flip: Flips a coin, what else did you expect?'
-  event << ' ^flop: Flops a coin, what expect did you else?'
-  event << ' ^ping: Used to show response time'
-  event << ' ^servercount: Returns the number of servers CB is in'
-  event << ' ^invite: Gives you a link to invite me to your own server!'
-  event << ' ^die: Shuts me down, only Cah can use this command'
-  event << ' ^roll: Rolls a number between 1 and 6'
-  event << ' ^eval: Like you don\'t know what eval commands do'
-  event << ' ^donate: Want to donate? That\'s great! This command gives you a link for Donorbox donations'
-  event << ' ^update: Gives you the latest CB update'
-  event << ' ^say: Makes CB say something, you need the manage messages perm tho'
-  event << ' ^thanks: Thanks to these radical donors!'
-  event << ' ^noot: noot'
+  event << ' (upon saying "CBB prefix") reminds you the prefix'
+  event << ' `B^info`: Shows you some info about CB, or something'
+  event << ' `B^rnumber <Number> <Other Number>`: Gives you a random number'
+  event << ' `B^help`: Basically tells you to go here'
+  event << ' `B^cmds`: pulls up this'
+  event << ' `B^eightball`: Ask the 8ball something'
+  event << ' `B^userinfo`: Shows some info about you'
+  event << ' `B^reverse`: Reverses text'
+  event << ' `B^flip`: Flips a coin, what else did you expect?'
+  event << ' `B^flop`: Flops a coin, what expect did you else?'
+  event << ' `B^ping`: Used to show response time'
+  event << ' `B^servercount`: Returns the number of servers CB is in'
+  event << ' `B^invite`: Gives you a link to invite me to your own server!'
+  event << ' `B^die`: Shuts me down, only Cah can use this command'
+  event << ' `B^roll`: Rolls a number between 1 and 6'
+  event << ' `B^eval`: Like you don\'t know what eval commands do'
+  event << ' `B^donate`: Want to donate? That\'s great! This command gives you a link for Donorbox donations'
+  event << ' `B^update`: Gives you the latest CB update'
+  event << ' `B^say`: Makes CB say something, you need the manage messages perm tho'
+  event << ' `B^feedback <words> (Warning: Borderline experimental)`: Sends your feedback to the CB Server'
+  event << ' `B^thanks`: Thanks to these radical donors!'
+  event << ' `B^noot`: noot'
 end
 
 bot.command(:feedback, min_args: 1) do |event, *args|
-  bot.send_message(252239053712392192, "New Feeback from `#{event.user.name}`\##{event.user.discriminator}. ID: #{event.user.id}.
-#{args.join(' ')}")
-  event.respond "Thanks! Feedback recorded."
+  bot.send_message(252239053712392192, "New Feeback from `#{event.user.name}`\##{event.user.discriminator}. ID: #{event.user.id}. From the land of #{event.server.name} (Server ID: #{event.server.id}).
+
+*#{args.join(' ')}*")
+  event.respond "Radical! Feedback sent."
 end
 
 bot.run
