@@ -10,7 +10,7 @@ end
 
 bot.command(:die, help_available: false) do |event|
   if event.user.id == 228290433057292288
-    bot.send_message(event.channel.id, 'CahBot is shutting down')
+    bot.send_message(event.channel.id, 'CahBot Beta is shutting down')
     exit
   else
     "Hey, you can't do that!"
@@ -60,7 +60,7 @@ end
 bot.command(:info, help_available: false, max_args: 0) do |event|
   event << "***Info About CahBot:***"
   event << ""
-  event << "**What is CahBot?** CB is a small Discord bot with loads of potential."
+  event << "**What is CahBot/CahBot Beta?** CB is a small Discord bot with loads of potential, Beta is the borderline experimental version."
   event << "**Who made CahBot?** Cah#5153 coded CahBot, with help from happyzachariah#6121 and others"
   event << "**Why does CahBot exist?** One day I was bored so I made a Discord bot. End of story kthxbai"
   event << "**Does CahBot have a server or something?** You bet, https://goo.gl/02ZRK5"
@@ -79,7 +79,7 @@ puts "^rnumber | Command ran by #{event.user.name}\##{event.user.discriminator} 
 end
 
 bot.command(:invite, help_available: false, max_args: 0) do |event|
-  event.respond "To invite me to your server, head over here: https://goo.gl/ttNED9"
+  event.respond "To invite me to your server, head over here: https://goo.gl/ttNED9 (Will be updated so you can invite Beta)"
 puts "^invite | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
@@ -102,32 +102,31 @@ bot.command(:userinfo, help_available: false, max_args: 0) do |event|
   event << "**Username:** `#{event.user.name}`"
   event << "**True or False: Are You A Bot?** `#{event.user.current_bot?}`"
   event << "**User Nickname** `#{event.user.nick}`"
-  event << "**User Avatar:** https://discordapp.com/api/v6/users/#{event.user.id}/avatars/#{event.user.avatar_id}.jpg"
+  event << "**User Avatar (may be wrong due to gif avatars):** https://discordapp.com/api/v6/users/#{event.user.id}/avatars/#{event.user.avatar_id}.jpg"
 puts "^userinfo | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
 bot.command(:thanks, help_available: false, max_args: 0) do |event|
   event << "Thanks so much to these current Donors:"
-  event << "ChewLeKitten#6216 - Tier 1 Donor"
+  event << "ChewLeKitten#6216 - Tier 1 Donor, First Donor, AND awesome contributor"
 puts "^thanks | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
 bot.command(:update, help_available: false, max_args: 0) do |event|
-  event << '**Latest CahBot Update**'
+  event << '**Latest CahBot Beta Update**'
   event << ''
-  event << 'No more will I have to do `B^eval bot.servers.count` because we now have **B^servercount**!'
-  event << 'A couple stuff was updated, some commands now have ailiases (B^commands and B^cmds return the same thing, B^servcount is the same as B^servercount, etc.).'
-  event << 'That\'s about all that was done recently'
+  event << 'Now I can see who ran a command and where, *finally* :eyes:'
+  event << 'B^feedback; You can now send bot feedback/suggestions, can\'t wait for the onslaught of people telling me I suck'
 puts "^update | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
 bot.command([:servercount, :servcount], help_available: false, max_args: 0) do |event|
-  event.respond "CahBot is on **#{bot.servers.count}** servers as of now"
+  event.respond "CahBot Beta is on **#{bot.servers.count}** servers as of now"
 puts "^servercount | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
 bot.command(:donate, help_available: false, max_args: 0) do |event|
-  event.respond "Hi #{event.user.name}, click here for donations: https://goo.gl/kF20Xw ~~*not a virus i swear*~~"
+  event.respond "Hi #{event.user.name}, click here for donations: <https://goo.gl/kF20Xw> ~~*not a virus i swear*~~"
 puts "^donate | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
@@ -165,7 +164,7 @@ bot.command([:cmds, :commands], chain_usable: false, max_args: 0) do |event|
   event << ' `B^say`: Makes CB say something, you need the manage messages perm tho'
   event << ' `B^feedback <words> (Warning: Borderline experimental)`: Sends your feedback to the CB Server'
   event << ' `B^thanks`: Thanks to these radical donors!'
-  event << ' `B^noot`: noot'
+  event << ' `B^noot`: noot (don\'t ask I didn\'t write this)'
 puts "^commands | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
