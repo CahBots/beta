@@ -122,6 +122,7 @@ bot.command(:update, help_available: false, max_args: 0) do |event|
   event << ''
   event << 'Now I can see who ran a command and where, *finally* :eyes:'
   event << 'B^feedback; You can now send bot feedback/suggestions, can\'t wait for the onslaught of people telling me I suck'
+  event << 'B^trello; Woah, a trello has appeared'
 puts "^update | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
@@ -169,6 +170,7 @@ bot.command([:cmds, :commands], chain_usable: false, max_args: 0) do |event|
   event << ' `B^say`: Makes CB say something, you need the manage messages perm tho'
   event << ' `B^feedback <words> (Warning: Borderline experimental)`: Sends your feedback to the CB Server'
   event << ' `B^thanks`: Thanks to these radical donors!'
+  event << ' `B^trello`: The Trello board, woahdude'
   event << ' `B^noot`: noot (don\'t ask I didn\'t write this)'
 puts "^commands | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
