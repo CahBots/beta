@@ -68,6 +68,11 @@ bot.command(:info, help_available: false, max_args: 0) do |event|
 puts "^info | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
+bot.command(:trello, help_available: false, max_args: 0) do |event|
+  event.respond "The Trello board for CahBot: https://goo.gl/QNJa3E"
+puts "^trello | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
+end
+
 bot.message(with_text: 'CBB prefix') do |event|
   event.respond "My prefix is `B^`. For help, do `B^help`"
 puts "\"CBB Prefix\" | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
