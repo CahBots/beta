@@ -185,5 +185,9 @@ puts "^feedback | Command ran by #{event.user.name}\##{event.user.discriminator}
   sleep 5
   m.delete
 end
+bot.message(with_text: '<@267104172049039373> help') do |event|
+  event << ' woahdude, you looking for help? Well, here\'s what you need to know.'
+  event << ' For a list of commands, you can do `B^cmds`, for info about CahBot, do `B^info`'
+end
 
 bot.run
