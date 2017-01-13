@@ -21,8 +21,10 @@ bot.command(:eval, help_available: false) do |event, *code|
   if event.user.id == 228290433057292288
     begin
       eval code.join(' ')
-    rescue
-      'Do you even code. m8?'
+    rescue => e
+      event << "Ah geez, something went wrong, it says:" 
+      event << "```ruby" 
+      event << "#{e} ```" 
     end
   else
      "Yo, you aren't allowed to do that!"
