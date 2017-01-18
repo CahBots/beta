@@ -178,18 +178,18 @@ puts "^commands | Command ran by #{event.user.name}\##{event.user.discriminator}
 end
 
 bot.command(:feedback, min_args: 1) do |event, *args|
-if event.channel.pm? == true
-  "Sorry, you can't send feedback via PM just yet!"
+  if event.channel.pm? == true
+    "Sorry, you can't send feedback via PM just yet!"
   break
-end
-else
-  event.message.delete
-  bot.send_message(252239053712392192, "New Feedback from `#{event.user.name}`\##{event.user.discriminator}. ID: #{event.user.id}. From the land of `#{event.server.name}` (Server ID: #{event.server.id}).
+  else
+    event.message.delete
+    bot.send_message(252239053712392192, "New Feedback from `#{event.user.name}`\##{event.user.discriminator}. ID: #{event.user.id}. From the land of `#{event.server.name}` (Server ID: #{event.server.id}).
 *#{args.join(' ')}*")
-  m = (event.respond "Radical! Feedback sent.")
+    m = (event.respond "Radical! Feedback sent.")
 puts "^feedback | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
-  sleep 5
-  m.delete
+    sleep 5
+    m.delete
+  end
 end
 
 bot.message(with_text: '<@267104172049039373> help') do |event|
