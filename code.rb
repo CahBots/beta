@@ -179,7 +179,7 @@ end
 
 bot.command(:feedback, min_args: 1) do |event, *args|
   if event.channel.pm? == true
-    "Sorry, you can't send feedback via PM just yet!"
+    event.respond "Sorry, you can't send feedback via PM just yet!"
     puts "^feedback | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) ran in a DM"
   break
   else
