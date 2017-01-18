@@ -22,9 +22,9 @@ bot.command(:eval, help_available: false) do |event, *code|
     begin
       eval code.join(' ')
     rescue => e
-      event << "Ah geez, something went wrong, it says:" 
-      event << "```ruby" 
-      event << "#{e} ```" 
+      event << "Ah geez, something went wrong, it says:"
+      event << "```" 
+      event << "#{e} ```"
     end
   else
      "Yo, you aren't allowed to do that!"
