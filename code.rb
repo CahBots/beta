@@ -181,6 +181,7 @@ bot.command(:feedback, min_args: 1) do |event, *args|
 if event.channel.pm? == true
   "Sorry, you can't send feedback via PM just yet!"
   break
+end
 else
   event.message.delete
   bot.send_message(252239053712392192, "New Feedback from `#{event.user.name}`\##{event.user.discriminator}. ID: #{event.user.id}. From the land of `#{event.server.name}` (Server ID: #{event.server.id}).
