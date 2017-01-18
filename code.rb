@@ -23,7 +23,7 @@ bot.command(:eval, help_available: false) do |event, *code|
       eval code.join(' ')
     rescue => e
       event << "Ah geez, something went wrong, it says:"
-      event << "```" 
+      event << "```"
       event << "#{e} ```"
     end
   else
@@ -190,6 +190,7 @@ else
 puts "^feedback | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
   sleep 5
   m.delete
+  end
 end
 
 bot.message(with_text: '<@267104172049039373> help') do |event|
