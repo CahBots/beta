@@ -181,6 +181,7 @@ bot.command(:feedback, min_args: 1) do |event, *args|
 if event.channel.pm? == true
   "Sorry, you can't send feedback via PM just yet!"
   break
+  end
 end
 else
   event.message.delete
@@ -190,8 +191,8 @@ else
 puts "^feedback | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
   sleep 5
   m.delete
-  end
 end
+
 
 bot.message(with_text: '<@267104172049039373> help') do |event|
   event << ' woahdude, you looking for help? Well, here\'s what you need to know.'
