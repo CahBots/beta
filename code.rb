@@ -185,11 +185,9 @@ bot.command(:feedback, min_args: 1) do |event, *args|
     m = (event.respond "Radical! Feedback sent.")
     sleep 5
     m.delete
-  end
   else
     event.message.delete
     bot.send_message(252239053712392192, "New Feedback from `#{event.user.name}`\##{event.user.discriminator}. ID: #{event.user.id}. From the land of `#{event.server.name}` (Server ID: #{event.server.id}).
-
 *#{args.join(' ')}*")
     m = (event.respond "Radical! Feedback sent.")
     puts "^feedback | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
