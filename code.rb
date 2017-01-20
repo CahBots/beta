@@ -197,9 +197,4 @@ bot.command(:feedback, min_args: 1) do |event, *args|
   end
 end
 
-bot.message(with_text: '<@267104172049039373> help') do |event|
-  event << ' woahdude, you looking for help? Well, here\'s what you need to know.'
-  event << ' For a list of commands, you can do `B^cmds`, for info about CahBot, do `B^info`'
-end
-
 bot.run
