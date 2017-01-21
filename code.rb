@@ -2,6 +2,8 @@ require 'discordrb'
 require 'configatron'
 require_relative 'config.rb'
 
+restart = `ruby code.rb`
+
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 267104172049039373, prefix: ['B^', '<@267104172049039373> ']
 
 bot.ready do |event|
@@ -12,6 +14,17 @@ bot.command(:die, help_available: false) do |event|
   if event.user.id == 228290433057292288
     bot.send_message(event.channel.id, 'CahBot Beta is shutting down')
     exit
+    puts restart
+  else
+    "Hey, you can't do that!"
+  end
+end
+
+bot.command(:die, help_available: false) do |event|
+  if event.user.id == 228290433057292288
+    bot.send_message(event.channel.id, 'CahBot Beta is restarting')
+    exit
+    puts restart
   else
     "Hey, you can't do that!"
   end
