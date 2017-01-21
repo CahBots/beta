@@ -20,7 +20,7 @@ bot.command(:die, help_available: false) do |event|
   end
 end
 
-bot.command(:die, help_available: false) do |event|
+bot.command(:restart, help_available: false) do |event|
   if event.user.id == 228290433057292288
     bot.send_message(event.channel.id, 'CahBot Beta is restarting')
     exit
