@@ -28,7 +28,7 @@ bot.command(:eval, help_available: false, required_permissions: 1, permission_me
 end
 
 bot.command(:restart, help_available: false, required_permissions: 1, permission_message: "Sorry, only Contributors and Cah can do this") do |event|
-  exec("#{restart}")
+  exec(restart)
 end
 
 bot.command(:ping, help_available: false, max_args: 0) do |event|
