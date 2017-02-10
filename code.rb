@@ -3,7 +3,7 @@ require 'configatron'
 require_relative 'config.rb'
 
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 267104172049039373, prefix: ['B^', '<@267104172049039373> '], ignore_bots: true
-restart = sh restart.sh
+restart = "bash restart.sh"
 
 bot.ready do |event|
   bot.game="Use B^cmds or B^info"
@@ -28,7 +28,7 @@ bot.set_user_permission(228290433057292288, 2)
 bot.set_user_permission(116013677060161545, 1)
 
 bot.command(:restart, help_available: false, required_permissions: 2, permission_message: "Sorry, only Contributors and Cah can do this") do |event|
-  exec("#{restart}")
+  exec(restart)
 end
 
 bot.command(:ping, help_available: false, max_args: 0) do |event|
