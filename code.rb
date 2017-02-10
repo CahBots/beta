@@ -9,9 +9,6 @@ bot.ready do |event|
   bot.game="Use B^cmds or B^info"
 end
 
-bot.set_user_permission(228290433057292288, 2)
-bot.set_user_permission(116013677060161545, 1)
-
 bot.command(:die, help_available: false, required_permissions: 2, permission_message: "Sorry, only Cah can do this") do |event|
     bot.send_message(event.channel.id, 'CahBot Beta is shutting down')
     exit
@@ -26,6 +23,9 @@ bot.command(:eval, help_available: false, required_permissions: 1, permission_me
     event << "#{e} ```"
   end
 end
+
+bot.set_user_permission(228290433057292288, 2)
+bot.set_user_permission(116013677060161545, 1)
 
 bot.command(:restart, help_available: false, required_permissions: 2, permission_message: "Sorry, only Contributors and Cah can do this") do |event|
   exec(restart)
