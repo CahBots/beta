@@ -3,32 +3,32 @@ require 'configatron'
 require_relative 'config.rb'
 
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 267104172049039373, prefix: ['B^', '<@267104172049039373> '], ignore_bots: true
+restart = "sh restart.sh"
+
+bot.set_user_permission(228290433057292288, 2)
+bot.set_user_permission(116013677060161545, 1)
 
 bot.ready do |event|
   bot.game="Use B^cmds or B^info"
 end
 
-bot.command(:die, help_available: false) do |event|
-  if event.user.id == 228290433057292288
+bot.command(:die, help_available: false, required_permissions: 2, permission_message: "Sorry, only Cah can do this") do |event|
     bot.send_message(event.channel.id, 'CahBot Beta is shutting down')
     exit
-  else
-    "Hey, you can't do that!"
+end
+
+bot.command(:eval, help_available: false, required_permissions: 1, permission_message: "Sorry, only Contributors and Cah can do this") do |event, *code|
+  begin
+    eval code.join(' ')
+  rescue => e
+    event << "Ah geez, something went wrong, it says:"
+    event << "```"
+    event << "#{e} ```"
   end
 end
 
-bot.command(:eval, help_available: false) do |event, *code|
-  if event.user.id == 228290433057292288
-    begin
-      eval code.join(' ')
-    rescue => e
-      event << "Ah geez, something went wrong, it says:"
-      event << "```"
-      event << "#{e} ```"
-    end
-  else
-     "Yo, you aren't allowed to do that!"
-  end
+bot.command(:restart, help_available: false, required_permissions: 1, permission_message: "Sorry, only Contributors and Cah can do this") do |event|
+  exec("#{restart}")
 end
 
 bot.command(:ping, help_available: false, max_args: 0) do |event|
