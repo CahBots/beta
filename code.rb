@@ -5,12 +5,12 @@ require_relative 'config.rb'
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 267104172049039373, prefix: ['B^', '<@267104172049039373> '], ignore_bots: true
 restart = "sh restart.sh"
 
-bot.set_user_permission(228290433057292288, 2)
-bot.set_user_permission(116013677060161545, 1)
-
 bot.ready do |event|
   bot.game="Use B^cmds or B^info"
 end
+
+bot.set_user_permission(228290433057292288, 2)
+bot.set_user_permission(116013677060161545, 1)
 
 bot.command(:die, help_available: false, required_permissions: 2, permission_message: "Sorry, only Cah can do this") do |event|
     bot.send_message(event.channel.id, 'CahBot Beta is shutting down')
