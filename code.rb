@@ -34,7 +34,7 @@ end
 bot.command(:restart, help_available: false) do |event|
   if event.user.id == 228290433057292288
     begin
-      exec(restart)
+      exec("bash restart.sh")
     end
   else
     "Sorry, only Cah can update me"
