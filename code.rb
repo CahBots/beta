@@ -8,11 +8,11 @@ bot.ready do |event|
   bot.game="Use B^cmds or B^info"
 end
 
-bot.create_server do |event|
+event.bot.create_server do |event|
   bot.send_message(252260490028384258, "CahBot Beta just joined #{event.server.name} (ID: #{event.server.id}), the owner is #{event.server.owner.distinct} (ID: #{event.server.owner.id})")
 end
 
-bot.delete_server do |event|
+event.bot.delete_server do |event|
   bot.send_message(252260490028384258, "CahBot Beta just left #{event.server.name} (ID: #{event.server.id}), the owner was #{event.server.owner.distinct} (ID: #{event.server.owner.id})")
 end
 
