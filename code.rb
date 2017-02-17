@@ -145,7 +145,7 @@ puts "^servercount | Command ran by #{event.user.name}\##{event.user.discriminat
 end
 
 bot.command(:donate, help_available: false, max_args: 0) do |event|
-  event.respond "Hi #{event.user.name}, click here for donations: <https://goo.gl/kF20Xw> ~~*not a virus i swear*~~"
+  event.respond "Hi #{event.user.name}, click here for donations: <https://goo.gl/QBvB7N> ~~*not a virus i swear*~~"
 puts "^donate | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
@@ -178,10 +178,10 @@ bot.command([:cmds, :commands], chain_usable: false, max_args: 0) do |event|
   event << ' `B^die`: Shuts me down, only Cah can use this command'
   event << ' `B^roll`: Rolls a number between 1 and 6'
   event << ' `B^eval`: Like you don\'t know what eval commands do'
-  event << ' `B^donate`: Want to donate? That\'s great! This command gives you a link for Donorbox donations'
+  event << ' `B^donate`: Want to donate? That\'s great! This command gives you a link for Patreon donations'
   event << ' `B^update`: Gives you the latest CB update'
   event << ' `B^say`: Makes CB say something, you need the manage messages perm tho'
-  event << ' `B^feedback <words> (Warning: Borderline experimental)`: Sends your feedback to the CB Server'
+  event << ' `B^feedback <words>`: Sends your feedback to the CB Server'
   event << ' `B^thanks`: Thanks to these radical donors!'
   event << ' `B^trello`: The Trello board, woahdude'
   event << ' `B^noot`: noot (don\'t ask I didn\'t write this)'
