@@ -97,7 +97,7 @@ puts "^rnumber | Command ran by #{event.user.name}\##{event.user.discriminator} 
 end
 
 bot.command(:invite, help_available: false, max_args: 0) do |event|
-  event.respond "To invite me to your server, head over here: https://goo.gl/ttNED9 (Will be updated so you can invite Beta)"
+  event.respond "To invite me to your server, head over here: https://goo.gl/EdcG9o"
 puts "^invite | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
