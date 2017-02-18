@@ -8,6 +8,10 @@ bot.ready do |event|
   bot.game="Use B^cmds or B^info"
 end
 
+bot.server_create do |event|
+  bot.send_message(281280895577489409, "CahBot Beta just joined #{event.server.name} (ID: #{event.server.id}), owned by #{event.server.owner.distinct} (ID: #{event.server.owner.id})")
+end
+
 bot.command(:die, help_available: false) do |event|
   if event.user.id == 228290433057292288
     bot.send_message(event.channel.id, 'CahBot Beta is shutting down')
@@ -126,16 +130,14 @@ end
 
 bot.command(:thanks, help_available: false, max_args: 0) do |event|
   event << "Thanks so much to these current Donors:"
-  event << "ChewLeKitten#6216 - Tier 1 Donor, First Donor, AND awesome contributor"
+  event << "ChewLeKitten#6216 - Cool Donor, Contributor, and an ultra-rad person"
 puts "^thanks | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
 bot.command(:update, help_available: false, max_args: 0) do |event|
   event << '**Latest CahBot Beta Update**'
   event << ''
-  event << 'Now I can see who ran a command and where, *finally* :eyes:'
-  event << 'B^feedback; You can now send bot feedback/suggestions, can\'t wait for the onslaught of people telling me I suck'
-  event << 'B^trello; Woah, a trello has appeared'
+  event << 'What'
 puts "^update | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
