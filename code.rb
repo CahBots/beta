@@ -109,7 +109,7 @@ bot.command(:invite, help_available: false, max_args: 0) do |event|
 puts "^invite | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
-bot.command(:say, help_available: false, required_permissions: [:manage_messages], min_args: 1) do |_event, *args|
+bot.command(:say, help_available: false, required_permissions: [:manage_messages], min_args: 1, permission_message: "Sorry, you need the Manage Messages perm in order to use B^say") do |_event, *args|
   _event.message.delete
   "#{args.join(' ')}"
 puts "^say | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
