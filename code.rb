@@ -13,7 +13,7 @@ bot.server_create do |event|
 end
 
 bot.server_delete do |event|
-  bot.send_message(281280895577489409, "CahBot Beta just left #{event.server.name} (ID: #{event.server.id}), owned by #{event.server.owner.distinct} (ID: #{event.server.owner.id})")
+  bot.send_message(281280895577489409, "CahBot Beta just left #{event.server.name} (ID: #{event.server.id}), owned by #{event.server.owner.name}\##{event.server.owner.discriminator} (ID: #{event.server.owner.id})")
 end
 
 bot.command(:die, help_available: false) do |event|
