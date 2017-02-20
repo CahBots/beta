@@ -51,7 +51,7 @@ bot.command(:restart, help_available: false) do |event|
   end
 end
 
-bot.command(set) do |event, action, *args|
+bot.command(:set, help_available: false) do |event, action, *args|
   if event.user.id == 228290433057292288
     case action
       when 'avatar'
