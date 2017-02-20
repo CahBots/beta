@@ -51,13 +51,13 @@ bot.command(:restart, help_available: false) do |event|
   end
 end
 
-bot.command(:set, help_available: false) do |event, action, *args|
+bot.command(:set, help_available: false) do |event, action, *arg|
   if event.user.id == 228290433057292288
     case action
       when 'avatar'
-        open("#{args.join(' ')}") { |pic| event.bot.profile.avatar = pic }
+        open("#{arg.join(' ')}") { |pic| event.bot.profile.avatar = pic }
       when 'username'
-        bot.profile.username="#{args.join(' ')}"
+        bot.profile.username = "#{arg.join(' ')}"
       else
         "I don't know what to do!"
       end
