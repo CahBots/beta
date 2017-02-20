@@ -1,5 +1,6 @@
 require 'discordrb'
 require 'configatron'
+require 'open-uri'
 require_relative 'config.rb'
 
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 267104172049039373, prefix: ['B^', '<@267104172049039373> '], ignore_bots: true
@@ -47,6 +48,21 @@ bot.command(:restart, help_available: false) do |event|
     end
   else
     "Sorry, only Cah can update me"
+  end
+end
+
+bot.command(set) do |event, action, *args|
+  if event.user.id == 228290433057292288
+    case action
+      when 'avatar'
+        open("#{args.join}") { |pic| event.bot.profile.avatar = pic }
+      when 'username'
+        bot.profile.username=("#{args.join}")
+      else
+        "I don't know what to do!"
+      end
+  else
+    "Sorry, only Cah can set stuff"
   end
 end
 
