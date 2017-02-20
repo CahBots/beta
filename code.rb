@@ -57,7 +57,7 @@ bot.command(:set, help_available: false) do |event, action, *args|
       when 'avatar'
         open("#{arg.join(' ')}") { |pic| event.bot.profile.avatar = pic }
       when 'username'
-        name = "(args.join(' '))"
+        name = "#{args.join(' ')}"
         bot.profile.username = name
       else
         "I don't know what to do!"
