@@ -55,10 +55,13 @@ bot.command(:set, help_available: false) do |event, action, *args|
   if event.user.id == 228290433057292288
     case action
       when 'avatar'
-        open("#{arg.join(' ')}") { |pic| event.bot.profile.avatar = pic }
+        open("#{args.join(' ')}") { |pic| event.bot.profile.avatar = pic }
       when 'username'
         name = "#{args.join(' ')}"
         bot.profile.username = name
+      when 'game'
+        bot.game = "#{args.join(' ')}"
+        event.respond 'GAME SET!'
       else
         "I don't know what to do!"
       end
