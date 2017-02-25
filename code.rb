@@ -137,7 +137,7 @@ end
 
 bot.command(:say, help_available: false, required_permissions: [:manage_messages], min_args: 1, permission_message: "Sorry, you need the Manage Messages perm in order to use B^say", usage: 'B^say <words>') do |event, *args|
   event.message.delete
-  "#{args.join(' ')}"
+  event.respond "#{args.join(' ')}"
   puts "^say | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
