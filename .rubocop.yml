@@ -1,0 +1,6 @@
+Metrics/LineLength:
+  Max: 500
+Security/Eval:
+  Enabled: false
+Style/NumericLiterals:
+  MinDigits: 15

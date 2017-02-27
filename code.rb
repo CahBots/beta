@@ -5,8 +5,10 @@ require_relative 'config.rb'
 
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 267104172049039373, prefix: ['B^', '<@267104172049039373> '], ignore_bots: true
 
+bot.bucket :normal, limit: 5, time_span: 15, delay: 3
+
 bot.ready do |_event|
-  bot.game='Use B^cmds or B^info'
+  bot.game = 'Use B^cmds or B^info'
 end
 
 bot.server_create do |event|
@@ -82,24 +84,26 @@ bot.command(:ping, help_available: false, max_args: 0, usage: 'B^ping') do |even
   puts "^ping | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
-bot.command([:eightball, :eball, :'8ball'], help_available: false, min_args: 1, usage: 'B^8ball <words>') do |event|
+bot.command([:eightball, :eball, :'8ball'], help_available: false, min_args: 1, usage: 'B^8ball <words>', bucket: :normal, rate_limit_message: 'Even the 8ball needs a break... (`%time%` seconds left)') do |event|
   event.respond ["Sources say... Yeah", "Sources say... Nah", "Perhaps", "As I see it, yes", "As I see it, no", "If anything, probably", "Not possible", "Ask again at a later time", "Say that again?", "lol idk", "Probably not", "woahdude", "[object Object]", "Undoubtfully so", "I doubt it", "Eh, maybe"].sample
   puts "^eightball | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
-bot.command(:roll, help_available: false, max_args: 0, usage: 'B^roll') do |event|
+bot.command(:roll, help_available: false, max_args: 0, usage: 'B^roll', bucket: :normal, rate_limit_message: 'There\'s no way you can roll a die that fast (`%time%` seconds left)') do |event|
   h = event.respond '**Rolling Dice!**'
-  sleep 2
+  sleep [1, 2, 3].sample
   h.edit "And you got a... **#{rand(1..6)}!**"
   puts "^roll | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
-bot.command(:flip, help_available: false, max_args: 0, usage: 'B^flip') do |event|
-  m = event.respond ["woahdude, you got **Heads**", "woahdude, you got **Tails**", "You got **heads**", "You got **tails**"].sample
+bot.command(:flip, help_available: false, max_args: 0, usage: 'B^flip', bucket: :normal, rate_limit_message: 'There\'s no way you can flip a coin that fast (`%time%` seconds left)') do |event|
+  m = event.respond '**Flipping Coin...**'
+  sleep [1, 2, 3].sample
+  m.edit ["woahdude, you got **Heads**", "woahdude, you got **Tails**", "You got **heads**", "You got **tails**"].sample
   puts "^flip | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
-bot.command(:flop, help_available: false, max_args: 0, usage: 'B^flop') do |event|
+bot.command(:flop, help_available: false, max_args: 0, usage: 'B^flop', bucket: :normal, rate_limit_message: 'There\'s no way you can coin a fast that flop (`%time%` seconds left)') do |event|
   m = event.respond ["Oops, the coin flipped so high it didn't come back down", "The coin multiplied and landed on both", "The coin... disappeared", "Pong! It took **#{((Time.now - event.timestamp) * 1000).to_i}ms** to ping the coin", "And you got a... **#{rand(1..6)}!** wait thats not how coins work", "Perhaps you could resolve your situation without relying on luck", "noot", "[Witty joke concerning flipping a coin]", "[BOTTOM TEXT]"].sample
   puts "^flop | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
