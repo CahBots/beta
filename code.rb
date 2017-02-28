@@ -78,10 +78,11 @@ bot.command(:set, help_available: false) do |event, action, *args|
   end
 end
 
-bot.command(:ban, help_available: false, max_args: 2, min_args: 2, usage: 'B^ban <mention>') do |event, *args|
+bot.command(:ban, help_available: false, max_args: 1, min_args: 1, usage: 'B^ban <mention>') do |event, *args|
   if event.user.id == 228290433057292288
     mention = bot.parse_mention("#{args.join}").id
     event.server.ban("#{mention}", message_days = 7)
+    'User has been beaned, the past 7 days of messages from them have been deleted'
   else
     'For testing purposes, you may not use this command'
   end
