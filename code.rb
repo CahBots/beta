@@ -78,6 +78,15 @@ bot.command(:set, help_available: false) do |event, action, *args|
   end
 end
 
+bot.command(:ban, help_available: false, max_args: 2, min_args: 2, usage: 'B^ban <mention>') do |event, *args|
+  if event.user.id == 228290433057292288
+    mention = bot.parse_mention("#{args.join}").id
+    event.server.ban("#{mention}", message_days = 7)
+  else
+    'For testing purposes, you may not use this command'
+  end
+end
+
 bot.command(:ping, help_available: false, max_args: 0, usage: 'B^ping') do |event|
   m = event.respond('Pinging!')
   m.edit "Pong! Hey, that took #{((Time.now - event.timestamp) * 1000).to_i}ms."

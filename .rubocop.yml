@@ -3,4 +3,4 @@ Metrics/LineLength:
 Security/Eval:
   Enabled: false
 Style/NumericLiterals:
-  MinDigits: 15
+  MinDigits: 30
