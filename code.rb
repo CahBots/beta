@@ -86,9 +86,9 @@ bot.command(:ban, help_available: false, required_permissions: [:ban_members], p
       mention = bot.parse_mention("#{args.join}").id
       event.server.ban("#{mention}", message_days = 7)
       event.respond ['User has been beaned, the past 7 days of messages from them have been deleted', 'User has been banned, the past 7 days of messages from them have been deleted']
-    rescue
+    rescue => e
       event.respond "Either the user you are trying to ban has a role higher than/equal to me, or some other error happened"
-      bot.send_message(281280895577489409, "ERROR on server #{event.server.name} (ID: #{event.server.id}), #{raise}")
+      bot.send_message(281280895577489409, "ERROR on server #{event.server.name} (ID: #{event.server.id}), #{e}")
     end
   else
     event.respond "Sorry, but I do not have the \"Ban Members\" permission"
