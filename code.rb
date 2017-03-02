@@ -69,7 +69,7 @@ bot.command(:set, help_available: false) do |event, action, *args|
       idle = bot.idle
       invis = bot.invisible
       dnd = bot.dnd
-      eval args.join
+      eval args.join nil
     else
       'I don\'t know what to do!'
     end
@@ -78,13 +78,16 @@ bot.command(:set, help_available: false) do |event, action, *args|
   end
 end
 
-bot.command(:ban, help_available: false, max_args: 1, min_args: 1, usage: 'B^ban <mention>') do |event, *args|
-  if event.user.id == 228290433057292288
+bot.command(:ban, help_available: false, required_permissions: [:ban_members], permission_message: 'Heh, sorry, but you need the Ban Members permission to use this command', max_args: 1, min_args: 1, usage: 'B^ban <mention>') do |event, *args|
+  channel = (event.server.channel)
+  bot_profile = bot.profile.on(event.server)
+  has_perms = bot_profile.permission?(:ban_members, channel)
+  if bot_profile.has_perms == true
     mention = bot.parse_mention("#{args.join}").id
     event.server.ban("#{mention}", message_days = 7)
-    'User has been beaned, the past 7 days of messages from them have been deleted'
+    event.respond ['User has been beaned, the past 7 days of messages from them have been deleted', 'User has been banned, the past 7 days of messages from them have been deleted']
   else
-    'For testing purposes, you may not use this command'
+    event.respond "Either I don't have the Ban Members permission, or the user you're trying to ban has a role higher than I do"
   end
 end
 
