@@ -81,7 +81,7 @@ end
 bot.command(:ban, help_available: false, required_permissions: [:ban_members], permission_message: 'Heh, sorry, but you need the Ban Members permission to use this command', max_args: 1, min_args: 1, usage: 'B^ban <mention>') do |event, *args|
   bot_profile = bot.profile.on(event.server)
   has_perms = bot_profile.permission?(:ban_members)
-  if bot_profile.has_perms == true
+  if bot.profile.has_perms == true
     mention = bot.parse_mention("#{args.join}").id
     event.server.ban("#{mention}", message_days = 7)
     event.respond ['User has been beaned, the past 7 days of messages from them have been deleted', 'User has been banned, the past 7 days of messages from them have been deleted']
