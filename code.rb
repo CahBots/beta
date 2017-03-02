@@ -82,11 +82,15 @@ bot.command(:ban, help_available: false, required_permissions: [:ban_members], p
   bot_profile = bot.profile.on(event.server)
   can_do_the_magic_dance = bot_profile.permission?(:ban_members)
   if can_do_the_magic_dance == true
-    mention = bot.parse_mention("#{args.join}").id
-    event.server.ban("#{mention}", message_days = 7)
-    event.respond ['User has been beaned, the past 7 days of messages from them have been deleted', 'User has been banned, the past 7 days of messages from them have been deleted']
+    begin
+      mention = bot.parse_mention("#{args.join}").id
+      event.server.ban("#{mention}", message_days = 7)
+      event.respond ['User has been beaned, the past 7 days of messages from them have been deleted', 'User has been banned, the past 7 days of messages from them have been deleted']
+    rescue
+      event.respond "Either the user you are trying to ban has a role higher than me, or some other error happened"
+    end
   else
-    event.respond "Either I don't have the Ban Members permission, or the user you're trying to ban has a role higher than I do"
+    event.respond "Sorry, but I do not have the \"Ban Members\" permission"
   end
 end
 
