@@ -82,7 +82,7 @@ bot.command(:ban, help_available: false, required_permissions: [:ban_members], p
   bot_profile = bot.profile.on(event.server)
   can_do_the_magic_dance = bot_profile.permission?(:ban_members)
   if can_do_the_magic_dance == true
-    if !event.mentions.empty?
+    if !event.message.mentions.empty?
       begin
         mention = bot.parse_mention("#{args.join}").id
         event.server.ban("#{mention}", message_days = 7)
