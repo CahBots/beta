@@ -82,16 +82,20 @@ bot.command(:ban, help_available: false, required_permissions: [:ban_members], p
   bot_profile = bot.profile.on(event.server)
   can_do_the_magic_dance = bot_profile.permission?(:ban_members)
   if can_do_the_magic_dance == true
-    begin
-      mention = bot.parse_mention("#{args.join}").id
-      event.server.ban("#{mention}", message_days = 7)
-      event.respond ['User has been beaned, the past 7 days of messages from them have been deleted', 'User has been banned, the past 7 days of messages from them have been deleted']
-    rescue => e
-      event.respond "Either the user you are trying to ban has a role higher than/equal to me, or some other error happened"
-      bot.send_message(281280895577489409, "ERROR on server #{event.server.name} (ID: #{event.server.id}) for command `B^ban`, `#{e}`")
+    if !event.mentions.empty?
+      begin
+        mention = bot.parse_mention("#{args.join}").id
+        event.server.ban("#{mention}", message_days = 7)
+        event.respond ['User has been beaned, the past 7 days of messages from them have been deleted', 'User has been banned, the past 7 days of messages from them have been deleted']
+      rescue => e
+        event.respond "The user you are trying to ban has a role higher than/equal to me. If you believe this is a mistake, report this to the CB Server"
+        bot.send_message(281280895577489409, "ERROR on server #{event.server.name} (ID: #{event.server.id}) for command `B^ban`, `#{e}`")
+      else
+        event.respond "Sorry, but I do not have the \"Ban Members\" permission"
+      end
+    else
+      event.respond "Sorry, but you need to mention the person you want to ban"
     end
-  else
-    event.respond "Sorry, but I do not have the \"Ban Members\" permission"
   end
 end
 
@@ -215,6 +219,8 @@ end
 
 bot.command([:cmds, :commands], chain_usable: false, max_args: 0, usage: 'B^commands') do |event|
   event << ' Here are all of my commands for you to use!'
+  event << '*__Moderation Commands (in the works)__*'
+  event << '`B^ban <mention>`'
   event << ' (upon saying "CBB prefix") reminds you the prefix'
   event << ' `B^info`: Shows you some info about CB, or something'
   event << ' `B^rnumber <Number> <Other Number>`: Gives you a random number'
