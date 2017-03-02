@@ -86,7 +86,7 @@ bot.command(:ban, help_available: false, required_permissions: [:ban_members], p
       begin
         mention = bot.parse_mention("#{args.join}").id
         event.server.ban("#{mention}", message_days = 7)
-        event.respond ['User has been beaned, the past 7 days of messages from them have been deleted', 'User has been banned, the past 7 days of messages from them have been deleted']
+        event.respond ["<@#{mention}> has been beaned, the past 7 days of messages from them have been deleted", "<@#{mention}> has been banned, the past 7 days of messages from them have been deleted"]
       rescue => e
         event.respond "The user you are trying to ban has a role higher than/equal to me. If you believe this is a mistake, report this to the CB Server"
         bot.send_message(281280895577489409, "ERROR on server #{event.server.name} (ID: #{event.server.id}) for command `B^ban`, `#{e}`")
@@ -95,6 +95,27 @@ bot.command(:ban, help_available: false, required_permissions: [:ban_members], p
       end
     else
       event.respond "Sorry, but you need to mention the person you want to ban"
+    end
+  end
+end
+
+bot.command(:kick, help_available: false, required_permissions: [:kick_members], permission_message: 'Heh, sorry, but you need the Kick Members permission to use this command', max_args: 1, min_args: 1, usage: 'B^kick <mention>') do |event, *args|
+  bot_profile = bot.profile.on(event.server)
+  can_do_the_other_magic_dance = bot_profile.permission?(:kick_members)
+  if can_do_the_other_magic_dance == true
+    if !event.message.mentions.empty?
+      begin
+        mention = bot.parse_mention("#{args.join}").id
+        event.server.kick("#{mention}")
+        event.respond ["<@#{mention}> has been keked", "<@#{mention}> has been kicked"]
+      rescue => e
+        event.respond "The user you are trying to kick has a role higher than/equal to me. If you believe this is a mistake, report this to the CB Server"
+        bot.send_message(281280895577489409, "ERROR on server #{event.server.name} (ID: #{event.server.id}) for command `B^kick`, `#{e}`")
+      else
+        event.respond "Sorry, but I do not have the \"Kick Members\" permission"
+      end
+    else
+      event.respond "Sorry, but you need to mention the person you want to kick"
     end
   end
 end
@@ -172,7 +193,7 @@ bot.command([:reverse, :rev], help_available: false, min_args: 1, usage: '>sdrow
 end
 
 bot.command(:userinfo, help_available: false, max_args: 0, usage: 'B^userinfo') do |event|
-  event << "**__User Info For You__**"
+  event << "**__User Info For You (in the works still)__**"
   event << ""
   event << "**User ID:** `#{event.user.id}`"
   event << "**User Discrim:** `#{event.user.discrim}`"
@@ -192,7 +213,7 @@ end
 bot.command(:update, help_available: false, max_args: 0, usage: 'B^update') do |event|
   event << '**Latest CahBot Beta Update**'
   event << ''
-  event << 'What'
+  event << 'AAAAAAA first few moderation commands AAAAAAA'
   puts "^update | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
@@ -220,30 +241,35 @@ end
 bot.command([:cmds, :commands], chain_usable: false, max_args: 0, usage: 'B^commands') do |event|
   event << ' Here are all of my commands for you to use!'
   event << '*__Moderation Commands (in the works)__*'
-  event << '`B^ban <mention>`'
-  event << ' (upon saying "CBB prefix") reminds you the prefix'
-  event << ' `B^info`: Shows you some info about CB, or something'
-  event << ' `B^rnumber <Number> <Other Number>`: Gives you a random number'
-  event << ' `B^help`: Basically tells you to go here'
-  event << ' `B^cmds`: pulls up this'
-  event << ' `B^eightball`: Ask the 8ball something'
-  event << ' `B^userinfo`: Shows some info about you'
-  event << ' `B^reverse`: Reverses text'
-  event << ' `B^flip`: Flips a coin, what else did you expect?'
-  event << ' `B^flop`: Flops a coin, what expect did you else?'
-  event << ' `B^ping`: Used to show response time'
-  event << ' `B^servercount`: Returns the number of servers CB is in'
-  event << ' `B^invite`: Gives you a link to invite me to your own server!'
-  event << ' `B^die`: Shuts me down, only Cah can use this command'
-  event << ' `B^roll`: Rolls a number between 1 and 6'
-  event << ' `B^eval`: Like you don\'t know what eval commands do'
-  event << ' `B^donate`: Want to donate? That\'s great! This command gives you a link for Patreon donations'
-  event << ' `B^update`: Gives you the latest CB update'
-  event << ' `B^say`: Makes CB say something, you need the manage messages perm tho'
-  event << ' `B^feedback <words>`: Sends your feedback to the CB Server'
-  event << ' `B^thanks`: Thanks to these radical donors!'
-  event << ' `B^trello`: The Trello board, woahdude'
-  event << ' `B^noot`: noot (don\'t ask I didn\'t write this)'
+  event << '`B^ban <mention>` Bans the user mentioned and deletes the past 7 days of messages from them'
+  event << '`B^kick <mention>` Kicks the user mentioned'
+  event << ''
+  event << '*__Fun/Other Commands/Things I Was Too Lazy To Group__*'
+  event << '(upon saying "CBB prefix") reminds you the prefix'
+  event << '`B^info`: Shows you some info about CB, or something'
+  event << '`B^rnumber <Number> <Other Number>`: Gives you a random number'
+  event << '`B^help`: Basically tells you to go here'
+  event << '`B^cmds`: pulls up this'
+  event << '`B^eightball`: Ask the 8ball something'
+  event << '`B^userinfo`: Shows some info about you'
+  event << '`B^reverse`: Reverses text'
+  event << '`B^flip`: Flips a coin, what else did you expect?'
+  event << '`B^flop`: Flops a coin, what expect did you else?'
+  event << '`B^ping`: Used to show response time'
+  event << '`B^servercount`: Returns the number of servers CB is in'
+  event << '`B^invite`: Gives you a link to invite me to your own server!'
+  event << '`B^die`: Shuts me down, only Cah can use this command'
+  event << '`B^roll`: Rolls a number between 1 and 6'
+  event << '`B^eval`: Like you don\'t know what eval commands do'
+  event << '`B^donate`: Want to donate? That\'s great! This command gives you a link for Patreon donations'
+  event << '`B^update`: Gives you the latest CB update'
+  event << '`B^say`: Makes CB say something, you need the manage messages perm tho'
+  event << '`B^feedback <words>`: Sends your feedback to the CB Server'
+  event << '`B^thanks`: Thanks to these radical donors!'
+  event << '`B^trello`: The Trello board, woahdude'
+  event << '`B^noot`: noot (don\'t ask I didn\'t write this)'
+  event << ''
+  event << 'As always, if you find a horrible bug, report it in the CB Server <https://goo.gl/02ZRK5>'
   puts "^commands | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})"
 end
 
