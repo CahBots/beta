@@ -187,7 +187,7 @@ end
 
 bot.command(:say, help_available: false, required_permissions: [:manage_messages], min_args: 1, permission_message: "Sorry, you need the Manage Messages perm in order to use B^say", usage: 'B^say <words>') do |event, *args|
   event.message.delete
-  event.respond "#{args.join(' ')}"
+  event.respond args.to_s
   bot.send_message(281280895577489409, "^say | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})")
 end
 
@@ -355,7 +355,7 @@ bot.command([:unsubscribe, :unsub]) do |event|
   end
 end
 
-bot.command(:accept, in: 269981476135632896) do |event|
+bot.command(:accept, in: '<#269981476135632896>') do |event|
   if event.server.id == 252196054101917696
     event.message.delete
     to_add = event.server.roles.find {|role| role.name == 'Members'}
