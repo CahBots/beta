@@ -357,13 +357,15 @@ end
 
 bot.command(:accept, in: '<#269981476135632896>') do |event|
   if event.server.id == 252196054101917696
-    event.message.delete
-    to_add = event.server.roles.find {|role| role.name == 'Members'}
-    if event.user.role?(to_add) == false
-      event.user.add_role(to_add)
-      event.user.pm("Thank you for reading the rules and information, enjoy your stay!")
-    else
-      event.respond "You must already have the member role, or an error has occured. Please notify cah or chew."
+    unless event.channel.id == 269981476135632896
+      event.message.delete
+      to_add = event.server.roles.find {|role| role.name == 'Members'}
+      if event.user.role?(to_add) == false
+        event.user.add_role(to_add)
+        event.user.pm("Thank you for reading the rules and information, enjoy your stay!")
+      else
+        event.respond "You must already have the member role, or an error has occured. Please notify cah or chew."
+      end
     end
   else
     event.respond 'This command can only be used in the CB Server'
