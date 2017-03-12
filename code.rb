@@ -31,11 +31,13 @@ end
 bot.command(:eval, help_available: false) do |event, *code|
   if event.user.id == 228290433057292288
     begin
-      eval code.join(' ')
+      event << 'Eval Complete!'
+      event << ''
+      event << "Output: ```#{eval code.join(' ')} ```"
     rescue => e
-      event << 'Ah geez, something went wrong, it says:'
-      event << '```'
-      event << "#{e} ```"
+      event << 'Eval Failed!'
+      event << ''
+      event << "Output: ```#{e} ```"
     end
   else
     'Sorry, only Cah can eval stuff'
@@ -57,19 +59,19 @@ bot.command(:set, help_available: false) do |event, action, *args|
   if event.user.id == 228290433057292288
     case action
     when 'avatar'
-      open("#{args.join(' ')}") { |pic| event.bot.profile.avatar = pic }
+      open(args.to_s) { |pic| event.bot.profile.avatar = pic }
     when 'username'
-      name = "#{args.join(' ')}"
+      name = args.to_s
       event.respond "Username set to `#{bot.profile.username = name}`"
     when 'game'
-      bot.game = "#{args.join(' ')}"
+      bot.game = args.to_s
       event.respond 'GAME SET!'
     when 'status'
       online = bot.on
       idle = bot.idle
       invis = bot.invisible
       dnd = bot.dnd
-      eval args.join nil
+      eval args.join; "Status Changed!"
     else
       'I don\'t know what to do!'
     end
