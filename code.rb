@@ -7,8 +7,12 @@ bot = Discordrb::Commands::CommandBot.new token: configatron.token, client_id: 2
 
 bot.bucket :normal, limit: 5, time_span: 15, delay: 3
 
-bot.ready do |_event|
-  bot.game = 'Use B^cmds or B^info'
+bot.ready do |event|
+  sleep 180
+  bot.game = "Use ^cmds or ^info"
+  sleep 180
+  bot.game = "on #{bot.servers.count} servers!"
+  redo
 end
 
 bot.server_create do |event|
