@@ -189,9 +189,10 @@ bot.command(:invite, help_available: false, max_args: 0, usage: 'B^invite') do |
   bot.send_message(281280895577489409, "^invite | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})")
 end
 
-bot.command(:say, help_available: false, required_permissions: [:manage_messages], min_args: 1, permission_message: "Sorry, you need the Manage Messages perm in order to use B^say", usage: 'B^say <words>') do |event, args|
+bot.command(:say, help_available: false, required_permissions: [:manage_messages], min_args: 1, permission_message: "Sorry, you need the Manage Messages perm in order to use B^say", usage: 'B^say <words>') do |event, *args|
   event.message.delete
-  event.respond args.to_s
+  event.respond "#{args.join('
+')}"
   bot.send_message(281280895577489409, "^say | Command ran by #{event.user.name}\##{event.user.discriminator} (ID: #{event.user.id}) on server #{event.server.name} (ID: #{event.server.id})")
 end
 
