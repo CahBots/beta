@@ -9,7 +9,7 @@ bot.bucket :normal, limit: 5, time_span: 15, delay: 3
 
 bot.ready do |event|
   sleep 180
-  bot.game = "Use ^cmds or ^info"
+  bot.game = "Use B^cmds or B^info"
   sleep 180
   bot.game = "on #{bot.servers.count} servers!"
   redo
