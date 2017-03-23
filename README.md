@@ -1,6 +1,8 @@
 # CahBot Beta
 
-[Main GitHub](http://github.com/2003cah/cahbot)
+[Add the Beta bot to your server!](https://goo.gl/EdcG9o) |
+[Main GitHub](http://github.com/2003cah/cahbot) |
+[Alpha GitHub](https://github.com/2003cah/cahbot-alpha)
 
 Join the Discord: ![Discord](https://discordapp.com/api/guilds/252196054101917696/widget.png)
 
