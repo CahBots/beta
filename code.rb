@@ -75,7 +75,7 @@ bot.command(:set, help_available: false) do |event, action, args|
       idle = bot.idle
       invis = bot.invisible
       dnd = bot.dnd
-      eval args.join; "Status Changed!"
+      args; "Status Changed!"
     else
       'I don\'t know what to do!'
     end
